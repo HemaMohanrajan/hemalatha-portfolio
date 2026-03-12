@@ -70,8 +70,11 @@ Large‑scale forecasting pipeline with automated validation and deployment.
 ### ✨ **Healthcare Evidence RAG System (Generative AI)**  
 📌 End-to-end Retrieval-Augmented Generation system for evidence-based healthcare Q&A using clinical guideline documents with source citations.  
 🛠 Python • FastAPI • FAISS Vector Search • Sentence Transformers • Ollama LLM • MLflow Experiment Tracking  
-🔗 **[View Project](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/RAG/healthcare-evidence-rag)**
+🔗 **[View Project](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/RAG/healthcare-evidence-rag)**  
+
 ---
+
+
 
 ## 🎓 Education & Certifications  
 - MSc Applied Data Science Engineering (UK)  
