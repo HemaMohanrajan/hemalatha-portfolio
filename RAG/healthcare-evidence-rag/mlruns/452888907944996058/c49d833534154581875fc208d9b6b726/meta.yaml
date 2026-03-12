@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/hemam/OneDrive/Desktop/AI-DS/Sample Projects/GitHub_Projects/RAG_System/healthcare-evidence-rag/mlruns/452888907944996058/c49d833534154581875fc208d9b6b726/artifacts
+end_time: 1773303910460
+entry_point_name: ''
+experiment_id: '452888907944996058'
+lifecycle_stage: active
+run_id: c49d833534154581875fc208d9b6b726
+run_name: adaptable-shrimp-485
+run_uuid: c49d833534154581875fc208d9b6b726
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773303059610
+status: 3
+tags: []
+user_id: hemam

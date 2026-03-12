@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/hemam/OneDrive/Desktop/AI-DS/Sample Projects/GitHub_Projects/RAG_System/healthcare-evidence-rag/mlruns/452888907944996058/24191e7b7f9c49b29c246888fe5202c8/artifacts
+end_time: 1773229846222
+entry_point_name: ''
+experiment_id: '452888907944996058'
+lifecycle_stage: active
+run_id: 24191e7b7f9c49b29c246888fe5202c8
+run_name: capable-mole-169
+run_uuid: 24191e7b7f9c49b29c246888fe5202c8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773229715656
+status: 3
+tags: []
+user_id: hemam

@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/hemam/OneDrive/Desktop/AI-DS/Sample Projects/GitHub_Projects/RAG_System/healthcare-evidence-rag/mlruns/452888907944996058/16a4334603d94dfd9a606178c7ec9f05/artifacts
+end_time: 1773163795736
+entry_point_name: ''
+experiment_id: '452888907944996058'
+lifecycle_stage: active
+run_id: 16a4334603d94dfd9a606178c7ec9f05
+run_name: enthused-worm-196
+run_uuid: 16a4334603d94dfd9a606178c7ec9f05
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773163547067
+status: 3
+tags: []
+user_id: hemam

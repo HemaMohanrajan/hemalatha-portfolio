@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/hemam/OneDrive/Desktop/AI-DS/Sample Projects/GitHub_Projects/RAG_System/healthcare-evidence-rag/mlruns/452888907944996058/faf6297587954c74a74f0dd678dc0b7a/artifacts
+end_time: 1773144212979
+entry_point_name: ''
+experiment_id: '452888907944996058'
+lifecycle_stage: active
+run_id: faf6297587954c74a74f0dd678dc0b7a
+run_name: enthused-conch-536
+run_uuid: faf6297587954c74a74f0dd678dc0b7a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773143870297
+status: 3
+tags: []
+user_id: hemam

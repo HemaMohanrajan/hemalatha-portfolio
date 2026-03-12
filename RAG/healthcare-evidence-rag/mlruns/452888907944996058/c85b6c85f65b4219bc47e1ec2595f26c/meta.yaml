@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/hemam/OneDrive/Desktop/AI-DS/Sample Projects/GitHub_Projects/RAG_System/healthcare-evidence-rag/mlruns/452888907944996058/c85b6c85f65b4219bc47e1ec2595f26c/artifacts
+end_time: 1773139010735
+entry_point_name: ''
+experiment_id: '452888907944996058'
+lifecycle_stage: active
+run_id: c85b6c85f65b4219bc47e1ec2595f26c
+run_name: unique-vole-78
+run_uuid: c85b6c85f65b4219bc47e1ec2595f26c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773138886336
+status: 3
+tags: []
+user_id: hemam

@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/hemam/OneDrive/Desktop/AI-DS/Sample Projects/GitHub_Projects/RAG_System/healthcare-evidence-rag/mlruns/452888907944996058/7c0848d69f994d2ebf9cb2612b056b51/artifacts
+end_time: 1773138871087
+entry_point_name: ''
+experiment_id: '452888907944996058'
+lifecycle_stage: active
+run_id: 7c0848d69f994d2ebf9cb2612b056b51
+run_name: fearless-mink-4
+run_uuid: 7c0848d69f994d2ebf9cb2612b056b51
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773138870916
+status: 3
+tags: []
+user_id: hemam
