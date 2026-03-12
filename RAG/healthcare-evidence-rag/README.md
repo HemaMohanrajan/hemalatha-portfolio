@@ -1,129 +1,270 @@
-# Healthcare Evidence RAG (Production-Style)
+# Healthcare Evidence RAG System (Production-Style)
 
-A healthcare-focused, evidence-grounded Retrieval-Augmented Generation (RAG) system that answers questions ONLY from provided medical PDFs, returns citations, applies safety guardrails, and includes evaluation + LLMOps tracking.
+A healthcare-focused **Retrieval-Augmented Generation (RAG)** system that answers questions using clinical guideline PDFs and returns **evidence-grounded responses with citations**.
 
-## Why this project
-Healthcare is high-stakes. This project emphasizes:
-- Grounded answers with citations (hallucination mitigation)
+The system focuses on **hallucination mitigation, safety guardrails, and experiment tracking**, making it closer to a **production-style LLM application**.
+
+---
+
+## Why This Project
+
+Healthcare AI systems must be **reliable, transparent, and evidence-based**.
+
+This project demonstrates:
+
+- Evidence-grounded answers with **citations**
+- **Hybrid retrieval** (dense vector search + BM25)
+- **Safety guardrails** for high-risk medical queries
+- **Evaluation pipeline** for RAG systems
+- **LLMOps experiment tracking** using MLflow
+- **Production API** using FastAPI
+
+---
+
+## Skills Demonstrated
+
+- Retrieval-Augmented Generation (RAG)
+- Vector similarity search with FAISS
 - Hybrid retrieval (dense + BM25)
-- Systematic evaluation (semantic similarity + faithfulness judge)
-- LLMOps via MLflow (metrics, prompts, params)
-- Production API via FastAPI + Docker
+- LLM integration (Ollama / OpenAI)
+- FastAPI REST API development
+- LLM evaluation pipelines
+- Experiment tracking with MLflow
+- Prompt engineering for grounded answers
 
+---
 
-## Architecture
+## System Architecture
 
-The system implements an evidence-grounded Retrieval Augmented Generation (RAG) pipeline for healthcare question answering.
+The system implements an **evidence-grounded RAG pipeline** for healthcare question answering.
 
-Ingestion: PDFs → chunking → embeddings → FAISS  
-Query: Safety → hybrid retrieval → grounded prompt → answer + citations  
-Ops: caching + logging + MLflow experiment tracking
+### Ingestion Pipeline
+PDF Documents → Chunking → Embeddings → FAISS Vector Index
+
+### Query Pipeline
+User Question → Safety Checks → Hybrid Retrieval → Prompt Construction → LLM Generation → Answer + Citations
+
+### Operations
+Caching + Logging + MLflow Experiment Tracking
+
+---
+
+## Architecture Diagram
 
 ```mermaid
 flowchart TB
-  %% ============ Ingestion ============
-  subgraph ING[Offline Ingestion (run ingest.py)]
-    A[Public Medical PDFs<br/>data/docs/] --> B[PDF Text Extractor<br/>(pypdf)]
-    B --> C[Medical-aware Chunking<br/>(overlap chunks)]
-    C --> D[Embeddings<br/>(Sentence-Transformers)]
-    D --> E[FAISS Vector Index<br/>data/index/faiss.index]
-    C --> M1[Chunk Metadata<br/>data/index/meta.jsonl]
-  end
 
-  %% ============ Serving ============
-  subgraph SRV[Online Serving (FastAPI)]
-    U[User / Client] -->|POST /query| API[FastAPI<br/>app.py]
+subgraph ING["Offline Ingestion (run ingest.py)"]
+    A["Public Medical PDFs<br/>data/docs/"] --> B["PDF Text Extractor"]
+    B --> C["Chunking with Overlap"]
+    C --> D["Sentence Transformer Embeddings"]
+    D --> E["FAISS Vector Index"]
+    C --> M1["Chunk Metadata"]
+end
 
-    API --> S[Safety Guardrails<br/>emergency + dosing caution]
-    API --> CACHE[TTL Cache<br/>(query→answer)]
+subgraph SRV["Online Serving (FastAPI)"]
+    U["User"] --> API["FastAPI Endpoint"]
+    API --> S["Safety Guardrails"]
+    API --> CACHE["TTL Cache"]
 
-    CACHE -->|hit| OUT[Answer + Citations + Latency]
-    CACHE -->|miss| RAG[RAG Pipeline<br/>src/rag.py]
-  end
+    CACHE -->|hit| OUT["Answer + Citations"]
+    CACHE -->|miss| RAG["RAG Pipeline"]
+end
 
-  %% ============ Retrieval ============
-  subgraph RET[Hybrid Retrieval]
-    Q[Question] --> QEMB[Query Embedding]
-    QEMB -->|dense| FAISS[FAISS Search]
-    Q -->|sparse| BM25[BM25 Search]
-    FAISS --> FUSE[Rank Fusion (RRF)]
+subgraph RET["Hybrid Retrieval"]
+    Q["Question"] --> QEMB["Query Embedding"]
+    QEMB --> FAISS["Vector Search"]
+    Q --> BM25["BM25 Search"]
+    FAISS --> FUSE["Rank Fusion"]
     BM25 --> FUSE
-    FUSE --> CTX[Top-k Context Chunks<br/>with citations]
-  end
+    FUSE --> CTX["Top-k Context Chunks"]
+end
 
-  %% ============ Generation ============
-  subgraph GEN[Grounded Generation]
-    CTX --> PROMPT[Prompt Builder<br/>grounded / cot / self_consistency]
-    PROMPT --> LLM[OpenAI LLM<br/>(Responses API)]
-    LLM --> ANS[Draft Answer]
-    PROMPT -->|self_consistency: 3 samples| LLM
-  end
+subgraph GEN["Grounded Generation"]
+    CTX --> PROMPT["Prompt Builder"]
+    PROMPT --> LLM["LLM via Ollama/OpenAI"]
+    LLM --> ANS["Generated Answer"]
+end
 
-  %% ============ Judge ============
-  subgraph JUDGE[Faithfulness Judge (LLM-as-Judge)]
-    CTX --> JP[Judge Prompt<br/>(faithfulness 1-5)]
-    ANS --> JP
-    JP --> LLMJ[OpenAI LLM<br/>(temp=0)]
-    LLMJ --> PICK[Pick Best Candidate<br/>(max score)]
-  end
+subgraph OPS["LLMOps + Evaluation"]
+    API --> LOG["Logging + Metrics"]
+    LOG --> MLF["MLflow Tracking"]
+    EVAL["evaluate.py"] --> MLF
+end
 
-  %% ============ Tracking ============
-  subgraph OPS[LLMOps + Evaluation]
-    API --> LOG[Logging + Metrics]
-    LOG --> MLF[MLflow Tracking<br/>(params, metrics, artifacts)]
-    EVAL[evaluate.py<br/>offline eval] --> MLF
-  end
+E --> RAG
+M1 --> RAG
+Q --> RAG
+RAG --> QEMB
+CTX --> PROMPT
+ANS --> OUT
+OUT --> CACHE
+```
 
-  %% ============ Wiring ============
-  E --> RAG
-  M1 --> RAG
-  Q --> RAG
-  RAG --> QEMB
-  CTX --> PROMPT
-  ANS -->|grounded/cot| OUT
-  PICK --> OUT
-  OUT --> CACHE
+---
 
-## Features
-- FastAPI endpoint: POST /query
-- Hybrid retrieval: FAISS (dense) + BM25 + rank-fusion
-- Prompt modes: grounded, cot (optional)
-- Safety guardrails: emergency detection + dosing caution messaging
-- Evaluation: semantic similarity + LLM-as-judge faithfulness scoring
-- MLflow: logs latency, tokens, params, artifacts
+## Key Features
 
-### Prompt strategies
-- `grounded`: concise answer strictly from retrieved context
-- `cot`: step-by-step reasoning (still grounded)
-- `self_consistency`: generates 3 candidates and uses an LLM judge to pick the most faithful answer
+### FastAPI Endpoint
+
+```
+POST /query
+```
+
+### Hybrid Retrieval
+
+- FAISS dense vector search
+- BM25 keyword search
+- Rank-fusion
+
+### Prompt Modes
+
+```
+grounded
+cot
+self_consistency
+```
+
+### Safety Guardrails
+
+- Emergency detection
+- Dosing caution messaging
+
+### Evaluation Metrics
+
+- Semantic similarity
+- Faithfulness scoring (LLM-as-judge)
+
+### Experiment Tracking
+
+- MLflow metrics
+- Prompt parameters
+- latency
+- artifacts
+
+---
+
+## Prompt Strategies
+
+### grounded
+Concise answers strictly based on retrieved context.
+
+### cot (Chain-of-Thought)
+Step-by-step reasoning while remaining grounded in evidence.
+
+### self_consistency
+Generates multiple candidate answers and selects the most faithful one using an LLM judge.
+
+---
+
+## Example Query
+
+Request
+
+```json
+{
+  "question": "What is hypertension?",
+  "k": 3
+}
+```
+
+Response
+
+```json
+{
+  "answer": "Hypertension is elevated blood pressure that increases the risk of cardiovascular disease.",
+  "citations": [
+    "doc:hypertension_guidelines p:13",
+    "doc:hypertension_guidelines p:14"
+  ],
+  "latency_ms": 21940
+}
+```
+
+---
+
+## Project Structure
+
+```
+healthcare-evidence-rag
+│
+├── app.py                 # FastAPI API server
+├── ingest.py              # Document ingestion pipeline
+├── evaluate.py            # Evaluation script
+├── requirements.txt
+│
+├── src
+│   ├── rag.py             # Core RAG pipeline
+│   ├── retriever.py       # Hybrid retrieval logic
+│   ├── embeddings.py      # Sentence embeddings
+│   ├── vectorstore.py     # FAISS vector database
+│   ├── llm_providers.py   # LLM integration
+│   ├── prompting.py       # Prompt templates
+│   ├── eval_metrics.py    # Evaluation metrics
+│   ├── safety.py          # Safety guardrails
+│   └── tracking.py        # MLflow tracking
+│
+└── data
+    ├── docs               # Medical guideline PDFs
+```
+
+---
 
 ## Quickstart
-1. Put public guideline PDFs in `data/docs/`  
-2. Build index:
-```bash
+
+### 1 Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
+### 2 Add medical documents
+
+Place guideline PDFs inside:
+
+```
+data/docs/
+```
+
+### 3 Build vector index
+
+```
 python ingest.py
+```
 
+### 4 Run the API
 
-## FastAPI
-![Fast API](images/ollama_screenshot.png)
+```
+python app.py
+```
+
+Open interactive docs:
+
+```
+http://localhost:8000/docs
+```
+
+---
+
+## FastAPI Example
+
+![FastAPI Example](images/ollama_screenshot.png)
+
+---
 
 ## Evaluation Results
 
-- Semantic similarity average: 0.7137191295623779
-- Average latency: 92820.9565639495 ms
-- Inference setup: Ollama local model on CPU
+Evaluation performed using **semantic similarity and latency metrics**.
 
-## Design Decisions
+- Semantic similarity average: **0.71**
+- Average latency: **~92 seconds**
+- Inference setup: **Ollama local model (CPU)**
 
-- Used hybrid retrieval (dense + BM25) to improve recall
-- Used citation-grounded prompting to reduce hallucinations
-- Added safety guardrails for high-risk healthcare queries
-- Supported both hosted and local LLM inference
-- Added experiment tracking for reproducibility
+---
 
 ## Experiment Tracking
 
-MLflow is used to track experiments including:
+MLflow tracks:
 
 - Prompt parameters
 - Retrieval settings
@@ -131,7 +272,39 @@ MLflow is used to track experiments including:
 - Token usage
 - Generated responses
 
-Example MLflow dashboard:
+Example dashboards:
 
 ![MLflow Dashboard](images/mlflow_dashboard.png)
-![MLflow Dashboard](images/mlflow_run.png)
+
+![MLflow Run](images/mlflow_run.png)
+
+---
+
+## Design Decisions
+
+Key design choices in the system:
+
+- Hybrid retrieval (vector + BM25) to improve recall
+- Citation-grounded prompting to reduce hallucinations
+- Safety guardrails for healthcare use cases
+- Support for both hosted and local LLM inference
+- MLflow tracking for reproducibility and monitoring
+
+---
+
+## Future Improvements
+
+Potential extensions:
+
+- Cross-encoder reranking
+- Adaptive retrieval (dynamic k)
+- Query decomposition for complex questions
+- Context compression
+- Docker deployment
+- Cloud inference support
+
+---
+
+## Disclaimer
+
+This project is for **educational and research purposes only** and should **not be used as a substitute for professional medical advice**.
