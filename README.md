@@ -56,14 +56,14 @@ Large‑scale forecasting pipeline with automated validation and deployment.
 ### 🎓 **Student Dropout & Academic Success Prediction**  
 📌 Multi-class classification predicting Dropout / Enrolled / Graduate outcomes  
 🛠 Python • Scikit-learn • EDA • Feature Engineering  
-🔗 **[View Project]([repo-link](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/01-machine-learning/student-dropout-prediction))**  
+🔗 **[View Project](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/01-machine-learning/student-dropout-prediction)**  
 
 ---
 
 ### 🚀 **SpaceX Launch Success Prediction**  
 📌 Predict Falcon 9 landing success + interactive dashboard  
 🛠 Python • SQL • Scikit-learn • Plotly Dash  
-🔗 **[View Project]([repo-link](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/01-machine-learning/spaceX-capstone))**  
+🔗 **[View Project](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/01-machine-learning/spaceX-capstone)**  
 
 ---
 
