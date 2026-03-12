@@ -68,10 +68,9 @@ Large‑scale forecasting pipeline with automated validation and deployment.
 ---
 
 ### ✨ **Healthcare Evidence RAG System (Generative AI)**  
-📌 Retrieval-Augmented Generation (RAG) system that answers healthcare questions using clinical guideline documents with grounded citations.  
-🛠 Python • FastAPI • FAISS • Sentence Transformers • Ollama (LLM) • MLflow  
-🔗 **[View Project](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/RAG/healthcare-evidence-rag)** 
-
+📌 End-to-end Retrieval-Augmented Generation system for evidence-based healthcare Q&A using clinical guideline documents with source citations.  
+🛠 Python • FastAPI • FAISS Vector Search • Sentence Transformers • Ollama LLM • MLflow Experiment Tracking  
+🔗 **[View Project](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/RAG/healthcare-evidence-rag)**
 ---
 
 ## 🎓 Education & Certifications  
