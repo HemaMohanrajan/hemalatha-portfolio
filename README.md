@@ -56,21 +56,21 @@ Large‑scale forecasting pipeline with automated validation and deployment.
 ### 🎓 **Student Dropout & Academic Success Prediction**  
 📌 Multi-class classification predicting Dropout / Enrolled / Graduate outcomes  
 🛠 Python • Scikit-learn • EDA • Feature Engineering  
-🔗 **[View Project](repo-link)**  
+🔗 **[View Project]([repo-link](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/01-machine-learning/student-dropout-prediction))**  
 
 ---
 
 ### 🚀 **SpaceX Launch Success Prediction**  
 📌 Predict Falcon 9 landing success + interactive dashboard  
 🛠 Python • SQL • Scikit-learn • Plotly Dash  
-🔗 **[View Project](repo-link)**  
+🔗 **[View Project]([repo-link](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/01-machine-learning/spaceX-capstone))**  
 
 ---
 
-### ✨ **Document Q&A using RAG (Generative AI)**  
-📌 LLM-powered retrieval augmented generation system  
-🛠 Python • OpenAI / Hugging Face • Embeddings • Vector DB  
-🔗 **[View Project](repo-link)**  
+### ✨ **Healthcare Evidence RAG System (Generative AI)**  
+📌 Retrieval-Augmented Generation (RAG) system that answers healthcare questions using clinical guideline documents with grounded citations.  
+🛠 Python • FastAPI • FAISS • Sentence Transformers • Ollama (LLM) • MLflow  
+🔗 **[View Project](https://github.com/HemaMohanrajan/hemalatha-portfolio/tree/main/RAG/healthcare-evidence-rag)** 
 
 ---
 
