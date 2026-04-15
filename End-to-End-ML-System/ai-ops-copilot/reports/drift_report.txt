@@ -1,0 +1,13 @@
+value: {'p_value': 0.0, 'drift_detected': True}
+hour: {'p_value': 0.5948909266533975, 'drift_detected': False}
+dayofweek: {'p_value': 0.9999856741600567, 'drift_detected': False}
+month: {'p_value': 0.9999979376057281, 'drift_detected': False}
+dayofyear: {'p_value': 0.9866673843393434, 'drift_detected': False}
+hour_sin: {'p_value': 0.45970935690577563, 'drift_detected': False}
+hour_cos: {'p_value': 0.7916558315886479, 'drift_detected': False}
+lag_1: {'p_value': 0.9788554380648299, 'drift_detected': False}
+lag_24: {'p_value': 0.9173881380376524, 'drift_detected': False}
+lag_168: {'p_value': 0.9938092065221347, 'drift_detected': False}
+rolling_mean_24: {'p_value': 0.6930188808185442, 'drift_detected': False}
+rolling_std_24: {'p_value': 0.9647107972752215, 'drift_detected': False}
+energy_id: {'p_value': 1.0, 'drift_detected': False}

@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+matplotlib
+seaborn
+holidays
+jupyter
+kafka-python
+fastapi
+uvicorn
+pydantic
