@@ -138,7 +138,11 @@ This solution can be extended into a real-world system using:
 
 ```
 energy-forecasting-xgboost/
-│── notebooks/
+│── data/
+│   └── PJME_hourly.csv
+|── images/
+│   └── prediction.png
+| ── notebooks/
 │   └── energy_forecasting.ipynb
 │── README.md
 │── requirements.txt
