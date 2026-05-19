@@ -60,11 +60,11 @@ K --> L[Final Answer]
 
 
 ## ⚙️ Key Features
-✅ Hybrid search (BM25 + FAISS)  
-✅ Cross-encoder reranking  
-✅ Optimized SEC chunking  
-✅ Modular production design  
-✅ LLM integration using Ollama (llama3)  
+- Hybrid search (BM25 + FAISS)  
+- Cross-encoder reranking  
+- Optimized SEC chunking  
+- Modular production design  
+- LLM integration using Ollama (llama3)  
 
 
 ## 🎯 Example Query
@@ -85,10 +85,10 @@ Generate answer using LLM
 
 ## 💼 Real-World Applications
 
-📈 Financial risk analysis
-💰 Investment research
-⚖️ Regulatory and compliance insights
-🤖 AI-powered financial assistants and decision support systems
+📈 Financial risk analysis  
+💰 Investment research  
+⚖️ Regulatory and compliance insights  
+🤖 AI-powered financial assistants and decision support systems  
 
 
 ## ⚙️ Setup & Run
@@ -119,12 +119,12 @@ python -m src.main
 
 
 ## 🔮 Future Improvements
-🔗 OpenAI / multi-LLM integration
-📊 Evaluation metrics (Recall@K, MRR)
-🌐 FastAPI deployment
-🎨 Streamlit UI for interactive querying
-⚡ Performance optimization
-🎯 Why This Project Matters
+🔗 OpenAI / multi-LLM integration  
+📊 Evaluation metrics (Recall@K, MRR)  
+🌐 FastAPI deployment  
+🎨 Streamlit UI for interactive querying  
+⚡ Performance optimization  
+🎯 Why This Project Matters  
 
 This project demonstrates how modern AI systems:
 
@@ -135,7 +135,7 @@ Generate context-aware responses using LLMs
 
 👉 This reflects real-world production AI system design used in industry.
 
-⭐ If you found this useful
+⭐ If you found this useful  
 ⭐ Star the repository
 🍴 Fork and experiment
 💬 Share feedback
