@@ -25,18 +25,19 @@ to answer complex financial questions using **hybrid retrieval, reranking, and L
 
 ```mermaid
 flowchart TD
-A[SEC Filings] --> C[Cleaning & Normalization]
+A[SEC Filings] --> C[Cleaning and Normalization]
 B[News Data] --> C
 C --> D[SEC Chunking]
 D --> E[Unified Corpus]
 E --> F[BM25 Retrieval]
-E --> G[Dense Embeddings (FAISS)]
+E --> G[Dense Embeddings - FAISS]
 F --> H[Hybrid Retrieval]
 G --> H
-H --> I[Cross-Encoder Reranking]
+H --> I[Cross Encoder Reranking]
 I --> J[Top Context Selection]
-J --> K[LLM (Ollama - llama3)]
+J --> K[LLM - Ollama llama3]
 K --> L[Final Answer]
+
 ```
 
 ## 🧠 Tech Stack
