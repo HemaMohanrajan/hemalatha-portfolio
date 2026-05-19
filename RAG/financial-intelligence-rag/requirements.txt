@@ -1,0 +1,12 @@
+pandas
+numpy
+nltk
+rank-bm25
+sentence-transformers
+faiss-cpu
+scikit-learn
+tqdm
+openai
+requests
+python-dotenv
+
