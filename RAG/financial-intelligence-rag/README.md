@@ -52,19 +52,19 @@ K --> L[Final Answer]
 
 
 ## ⚡ Key Highlights
-🔎 Hybrid Retrieval (BM25 + Dense Embeddings)
-🎯 Cross-Encoder Reranking for improved relevance
-✂️ Optimized SEC Chunking Strategy
-🏗️ Production-Style Modular Architecture
-🤖 End-to-End RAG Pipeline with LLM integration
+-  🔎 Hybrid Retrieval (BM25 + Dense Embeddings)
+-  🎯 Cross-Encoder Reranking for improved relevance
+-  ✂️ Optimized SEC Chunking Strategy
+-  🏗️ Production-Style Modular Architecture
+-  🤖 End-to-End RAG Pipeline with LLM integration
 
 
 ## ⚙️ Key Features
-✅ Hybrid search (BM25 + FAISS)
-✅ Cross-encoder reranking
-✅ Optimized SEC chunking
-✅ Modular production design
-✅ LLM integration using Ollama (llama3)
+✅ Hybrid search (BM25 + FAISS)  
+✅ Cross-encoder reranking  
+✅ Optimized SEC chunking  
+✅ Modular production design  
+✅ LLM integration using Ollama (llama3)  
 
 
 ## 🎯 Example Query
